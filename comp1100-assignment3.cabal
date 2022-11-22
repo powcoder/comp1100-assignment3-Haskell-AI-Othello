@@ -1,0 +1,52 @@
+name:                 comp1100-assignment3
+version:              0.1.0.0
+synopsis:             COMP1100 Assignment 3 - Othello
+description:          COMP1100 Assignment 3 - Othello
+license:              AllRightsReserved
+homepage:             https://cs.anu.edu.au/students/comp1100/assignments/03
+author:               Robert 'Probie' Offner
+copyright:            2018-2019 The Australian National University
+maintainer:           robert.offner@anu.edu.au, jack.kelly@anu.edu.au
+category:
+build-type:           Simple
+cabal-version:        >=1.10
+
+library
+  exposed-modules:      AI
+                      , Config
+                      , Dragons.Config
+                      , Dragons.GUI
+                      , Dragons.Network
+                      , Dragons.Timeout
+                      , Game
+                      , GameState
+
+  build-depends:        base >= 4.7 && < 5
+                      , binary
+                      , blank-canvas
+                      , bytestring
+                      , network < 3.0.0.0
+                      , stm
+                      , text
+  hs-source-dirs:       src
+  default-language:     Haskell2010
+  ghc-options:          -O2 -Wall -Werror -Widentities -Wredundant-constraints -Wno-unrecognised-warning-flags -Wno-missing-home-modules
+
+executable othello
+  main-is:              Main.hs
+  build-depends:        base >= 4.7 && < 5
+                      , comp1100-assignment3
+                      , stm
+  hs-source-dirs:       app
+  default-language:     Haskell2010
+  ghc-options:          -O2 -threaded -Wall -Werror -Widentities -Wredundant-constraints -Wno-unrecognised-warning-flags -Wno-missing-home-modules
+
+test-suite othello-test
+  type:                exitcode-stdio-1.0
+  main-is:             OthelloTest.hs
+  other-modules:       Testing
+  build-depends:       base >= 4.7 && < 5
+                     , comp1100-assignment3
+  hs-source-dirs:      test
+  ghc-options:         -threaded -Wall
+  default-language:    Haskell2010
